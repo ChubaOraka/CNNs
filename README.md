@@ -15,6 +15,7 @@ The lectures were hosted by [Montgomery County Makers (MoCo Makers)](http://www.
 
 I would like to highlight this repo from [Ali Talib's GitHub page](https://github.com/AliAsgerTalib-AI):
     >[All-About-the-GAN](https://github.com/AliAsgerTalib-AI/All-About-the-GAN) repo gives some introduction to GANs
+- [Lecture 6](https://www.meetup.com/MoCoMakers/events/mdxsppyxmbvb/): We were introduced to a new tool that adopted a more graphical, drag-and-drop approach to creating machine learning model called by [Deep Learning Studio](https://app.deepcognition.ai/app/project/1/data) by [Deep Cognition](https://deepcognition.ai/). **[This folder is empty at the momemt]**
 
 ## Note
 You can also check [Ali Talib's GitHub page](https://github.com/AliAsgerTalib-AI).
