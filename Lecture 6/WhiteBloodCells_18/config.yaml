@@ -1,0 +1,182 @@
+data:
+  dataset: {name: Blood Cells, samples: 10028, type: private}
+  datasetLoadOption: batch
+  kfold: 1
+  mapping:
+    Filename:
+      options: {Augmentation: false, Height: '20', Normalization: true, Resize: true,
+        Scaling: 1, Width: '20', height_shift_range: 0, horizontal_flip: false, pretrained: None,
+        rotation_range: 0, shear_range: 0, vertical_flip: false, width_shift_range: 0}
+      port: InputPort0
+      shape: ''
+      type: Image
+    Label:
+      options: {}
+      port: OutputPort0
+      shape: ''
+      type: Categorical
+  numPorts: 1
+  samples: {split: 4, test: 1002, training: 8022, validation: 1002}
+  shuffle: true
+model:
+  connections:
+  - {source: activation_104, target: dense_15}
+  - {source: dropout_1, target: dense_14}
+  - {source: batchnormalization_192, target: activation_103}
+  - {source: activation_102, target: dense_13}
+  - {source: flatten, target: dense_12}
+  - {source: convolution2d_219, target: maxpooling2d_29}
+  - {source: convolution2d_217, target: convolution2d_218}
+  - {source: maxpooling2d_28, target: convolution2d_216}
+  - {source: convolution2d_215, target: batchnormalization_191}
+  - {source: maxpooling2d_27, target: convolution2d_214}
+  - {source: convolution2d_212, target: convolution2d_213}
+  - {source: Input_0, target: convolution2d_212}
+  - {source: convolution2d_213, target: maxpooling2d_27}
+  - {source: convolution2d_214, target: convolution2d_215}
+  - {source: batchnormalization_191, target: maxpooling2d_28}
+  - {source: convolution2d_216, target: convolution2d_217}
+  - {source: convolution2d_218, target: convolution2d_219}
+  - {source: maxpooling2d_29, target: flatten}
+  - {source: dense_12, target: activation_102}
+  - {source: dense_13, target: batchnormalization_192}
+  - {source: activation_103, target: dropout_1}
+  - {source: dense_14, target: activation_104}
+  - {source: dense_15, target: Output_0}
+  layers:
+  - args: {}
+    class: Input
+    name: Input_0
+    x: 60
+    y: 60
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 64,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_212
+    x: 60
+    y: 180
+  - args: {activation: linear, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 64,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_213
+    x: 60
+    y: 300
+  - args: {dim_ordering: th, strides: '(2, 2)'}
+    class: MaxPooling2D
+    name: maxpooling2d_27
+    x: 60
+    y: 420
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_214
+    x: 60
+    y: 540
+  - args: {activation: linear, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_215
+    x: 60
+    y: 660
+  - args: {}
+    class: BatchNormalization
+    name: batchnormalization_191
+    x: 60
+    y: 780
+  - args: {dim_ordering: th, strides: '(2, 2)'}
+    class: MaxPooling2D
+    name: maxpooling2d_28
+    x: 60
+    y: 900
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 40,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_216
+    x: 410
+    y: 60
+  - args: {activation: linear, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 40,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_217
+    x: 410
+    y: 180
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 40,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_218
+    x: 410
+    y: 300
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 40,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_219
+    x: 410
+    y: 420
+  - args: {dim_ordering: th, strides: '(2, 2)'}
+    class: MaxPooling2D
+    name: maxpooling2d_29
+    x: 410
+    y: 540
+  - args: {}
+    class: Flatten
+    name: flatten
+    x: 410
+    y: 660
+  - args: {activation: linear, output_dim: 2048}
+    class: Dense
+    name: dense_12
+    x: 410
+    y: 780
+  - args: {activation: relu}
+    class: Activation
+    name: activation_102
+    x: 410
+    y: 900
+  - args: {activation: linear, output_dim: 1024}
+    class: Dense
+    name: dense_13
+    x: 760
+    y: 60
+  - args: {}
+    class: BatchNormalization
+    name: batchnormalization_192
+    x: 760
+    y: 180
+  - args: {activation: relu}
+    class: Activation
+    name: activation_103
+    x: 760
+    y: 300
+  - args: {p: 0.4}
+    class: Dropout
+    name: dropout_1
+    x: 760
+    y: 420
+  - args: {activation: linear, output_dim: 1024}
+    class: Dense
+    name: dense_14
+    x: 760
+    y: 540
+  - args: {activation: relu}
+    class: Activation
+    name: activation_104
+    x: 760
+    y: 660
+  - args: {activation: softmax, output_dim: 4}
+    class: Dense
+    name: dense_15
+    x: 760
+    y: 780
+  - args: {}
+    class: Output
+    name: Output_0
+    x: 760
+    y: 900
+params:
+  advance_params: true
+  batch_size: 120
+  is_custom_loss: false
+  loss_func: categorical_crossentropy
+  num_epoch: 30
+  optimizer: {name: RMSprop}
+project: White Blood Cells
