@@ -1,0 +1,72 @@
+data:
+  dataset: {name: mnist, samples: 70000, type: public}
+  datasetLoadOption: batch
+  kfold: 1
+  mapping:
+    Digit Label:
+      options: {}
+      port: OutputPort0
+      shape: ''
+      type: Categorical
+    Image:
+      options: {Augmentation: false, Height: 28, Normalization: true, Resize: true,
+        Scaling: 1, Width: 28, height_shift_range: 0, horizontal_flip: false, pretrained: None,
+        rotation_range: 0, shear_range: 0, vertical_flip: false, width_shift_range: 0}
+      port: InputPort0
+      shape: ''
+      type: Image
+  numPorts: 1
+  samples: {split: 4, test: 7000, training: 56000, validation: 7000}
+  shuffle: false
+model:
+  connections:
+  - {source: Input_1, target: Convolution2D_1}
+  - {source: Flatten_1, target: Dense_1}
+  - {source: Dense_2, target: Output_1}
+  - {source: Dense_1, target: Dense_2}
+  - {source: MaxPooling2D_1, target: Flatten_1}
+  - {source: Convolution2D_1, target: MaxPooling2D_1}
+  layers:
+  - args: {}
+    class: Input
+    name: Input_1
+    x: 2
+    y: 29
+  - args: {}
+    class: Output
+    name: Output_1
+    x: 25
+    y: 778
+  - args: {nb_col: '3', nb_filter: '32', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_1
+    x: 10
+    y: 167
+  - args: {}
+    class: MaxPooling2D
+    name: MaxPooling2D_1
+    x: 26
+    y: 291
+  - args: {}
+    class: Flatten
+    name: Flatten_1
+    x: 18
+    y: 387
+  - args: {activation: relu, output_dim: '100'}
+    class: Dense
+    name: Dense_1
+    x: 15
+    y: 544
+  - args: {activation: softmax, output_dim: '10'}
+    class: Dense
+    name: Dense_2
+    x: 25
+    y: 650
+params:
+  advance_params: true
+  batch_size: 32
+  is_custom_loss: false
+  loss_func: categorical_crossentropy
+  num_epoch: 10
+  optimizer: {name: Adam}
+project: ai-mnist-sample

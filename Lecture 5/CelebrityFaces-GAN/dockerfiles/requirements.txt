@@ -1,4 +1,0 @@
-matplotlib
-requests
-Pillow
-tqdm
