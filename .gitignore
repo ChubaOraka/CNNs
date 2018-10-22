@@ -1,2 +1,3 @@
 # Ignore compressed files
 *.zip
+.vscode

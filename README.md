@@ -20,6 +20,7 @@ The lectures were hosted by [Montgomery County Makers (MoCo Makers)](http://www.
 - [Lecture 8](https://www.meetup.com/MoCoMakers/events/mdxsppyxmbnc/): This lecture explored Object Detection. [A program using Faster-RCNN](./Lecture%208/Detect%20Objects%20via%20Webcam.py) was illustrated. Using a webcam and analysing the video image, it is able to label some of the things it recognized pretty accurately. Here's a snapshot:
     ![Webcam Snapshot](./Lecture%208/WebcamObjectDetectionSnapshot.jpg)
 We were introduced to some concepts in object detection like Jaccard Index (or Intersection over Union, IoU), R-CNN, Faster R-CNN, etc.
+- [Lecture 9](https://www.meetup.com/MoCoMakers/events/mdxsppyxnbsb/): Expanding on the concept of Object Detection, we learnt about segmentation. This concept helps computers move beyond mere reconition of objects to the contextual importance of object with respect to its surroundings.
 
 ## Note
 You can also check [Ali Talib's GitHub page](https://github.com/AliAsgerTalib-AI).
